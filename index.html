@@ -1,0 +1,151 @@
+<html>
+	<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+	<head>
+		<script src='js/Constant.js'></script>
+		<script src='js/OtherToken.js'></script>
+		<script src='js/NumberToken.js'></script>
+		<script src='js/BDToken.js'></script>
+		<script src='js/Parser.js'></script>
+		<script src='js/BDParser.js'></script>
+		<script src='js/ConvertController.js'></script>
+		<script>
+			function onToSimpleClick(e)
+			{
+				var tmpStr = ConvertController.BDToSimple(document.getElementById('BDInput').value);
+				document.getElementById('simpleInput').value = tmpStr;
+				document.getElementById('simpleOutput').value = tmpStr;
+			}
+
+			function onToBDClick(e)
+			{
+				var tmpStr = ConvertController.SimpleToBD(document.getElementById('simpleInput').value);
+				document.getElementById('BDInput').value = tmpStr;
+			}
+
+			function onToOtherClick(e)
+			{
+				var tmpStr = ConvertController.OtherReverse(document.getElementById('simpleInput').value);
+				document.getElementById('simpleOutput').value = tmpStr;
+			}
+
+			function onToLowerClick(e)
+			{
+				var tmpStr = '';
+				if (document.getElementById('simpleOutput').value != '')
+				{
+					tmpStr = ConvertController.SimpleLowerCase(document.getElementById('simpleOutput').value);	
+				}
+				else
+				{
+					tmpStr = ConvertController.SimpleLowerCase(document.getElementById('simpleInput').value);	
+				}
+				document.getElementById('simpleOutput').value = tmpStr;
+			}
+
+			function onToUpperClick(e)
+			{
+				var tmpStr = '';
+				if (document.getElementById('simpleOutput').value != '')
+				{
+					tmpStr = ConvertController.SimpleUpperCase(document.getElementById('simpleOutput').value);	
+				}
+				else
+				{
+					tmpStr = ConvertController.SimpleUpperCase(document.getElementById('simpleInput').value);	
+				}
+				document.getElementById('simpleOutput').value = tmpStr;
+			}
+
+			function onToRerverseClick(e)
+			{
+				var tmpStr = ConvertController.SimpleReverse(document.getElementById('simpleInput').value);
+				document.getElementById('simpleInput').value = tmpStr;
+				document.getElementById('simpleOutput').value = tmpStr;
+			}
+
+			
+		</script>
+	</head>
+	<body>
+		<b>半音阶用的BD谱贴左边 , 简谱贴右边, [1]是高音1，(1)低音1,#4升半调4，恩</b>
+		<br/>
+		<b>半音数和调号的对照表</b>
+		<br/>
+		<table border="1">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+				<td>11</td>
+				<td>12</td>
+				<td>13</td>
+				<td>14</td>
+				<td>15</td>
+				<td>16</td>
+				<td>17</td>
+				<td>18</td>
+				<td>19</td>
+				<td>20</td>
+				<td>21</td>
+				<td>22</td>
+				<td>23</td>
+				<td>24</td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td>#C</td>
+				<td>D</td>
+				<td>#D</td>
+				<td>E</td>
+				<td>F</td>
+				<td>#F</td>
+				<td>G</td>
+				<td>#G</td>
+				<td>A</td>
+				<td>#A</td>
+				<td>B</td>
+				<td>C</td>
+				<td>#C</td>
+				<td>D</td>
+				<td>#D</td>
+				<td>E</td>
+				<td>F</td>
+				<td>#F</td>
+				<td>G</td>
+				<td>#G</td>
+				<td>A</td>
+				<td>#A</td>
+				<td>B</td>
+			</tr>
+		</table>
+		<br/>
+		<b>例子 ： </b>
+		<br/>
+		<b>#C调降到C调的话是降2-1=1个半音，A调升到E调是升17-10=7个半音。</b>
+		<br/>
+		<textarea rows='30' cols='40' id='BDInput'></textarea>
+		<textarea rows='30' cols='40' id='simpleInput'></textarea>
+		<br/>
+		<input type='button' value='BD转简谱' id='btn_ToSimple' onclick='onToSimpleClick(event)'/>
+		<input type='button' value='简谱转BD' id='btn_ToBD' onclick='onToBDClick(event)'/>
+		<input type='button' value='半调同写' id='btn_ToOther' onclick='onToOtherClick(event)'/>
+		<br/>
+		<input type='button' value='()变成[],[]变成()' id='btn_ToReverse' onclick='onToRerverseClick(event)'/>
+		<b>将简谱部分的()与[]互换，适应不同的写谱习惯</b>
+		<br/>
+		<br/>
+		<input type='button' value='恩，我要降一次简谱' id='btn_ToLowerCase' onclick='onToLowerClick(event)'/>
+		<input type='button' value='我要升一次简谱' id='btn_ToUpperCase' onclick='onToUpperClick(event)'/>
+		<b><br/>简谱转谱请贴在下面，如果进行过BD转简谱，下面会自动显示上面右边的简谱</b>
+		<br/>
+		<br/>
+		<textarea rows='20' cols='84' id='simpleOutput'></textarea>
+	</body>
+</html>
